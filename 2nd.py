@@ -24,15 +24,26 @@ def run_pc():
 if __name__ == "__main__":
     options = Options()
     # options.add_argument("--headless")  #设置后台运行，无窗口化
-    # 移动设备解开下面三行注释
-    # mobile_emulation = {'deviceName': 'iPhone 6'}   #添加移动端
-    # # mobile_emulation = {'deviceName': 'Pixel 5'}  # 添加移动端
-    # options.add_experimental_option("mobileEmulation", mobile_emulation)    #使用移动端模拟器打开
+
+    # PC端
     driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver', options=options)
     for i in range(30):  # 每次搜索获取3积分，根据个人等级调整循环次数
         random_number = random.randint(1, 100)
         run_pc()
-        print('第', i + 1, '次完成')
+        print('PC端第', i + 1, '次完成')
         time.sleep(2)
     driver.quit()
-    print('任务完成')
+    print('PC端完成')
+
+    # 移动端
+    mobile_emulation = {'deviceName': 'iPhone 6'}  # 添加移动端
+    # mobile_emulation = {'deviceName': 'Pixel 5'}  # 添加移动端
+    options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动端模拟器打开
+    driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver', options=options)
+    for i in range(20):  # 每次搜索获取3积分，根据个人等级调整循环次数
+        random_number = random.randint(1, 100)
+        run_pc()
+        print('移动端第', i + 1, '次完成')
+        time.sleep(2)
+    driver.quit()
+    print('移动端完成')
