@@ -17,33 +17,34 @@ def OpenUrl(url):
             driver.add_cookie(cookie)
 
 
-def run_pc():
+def run_pc(random_number):
     OpenUrl('https://cn.bing.com/search?q=' + str(random_number))
+
+
+def getScore(str, times):
+    for i in range(times):  # 每次搜索获取3积分，根据个人等级调整循环次数timse
+        random_number = random.randint(1, 100)
+        run_pc(random_number)
+        print(str + '第', i + 1, '次完成')
+        time.sleep(2)
+    driver.quit()
 
 
 if __name__ == "__main__":
     options = Options()
+    # 设置driver路径
+    driverPath = 'C:/Users/Windy/EdgeDriver/msedgedriver'
     # options.add_argument("--headless")  #设置后台运行，无窗口化
 
     # PC端
-    driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver', options=options)
-    for i in range(30):  # 每次搜索获取3积分，根据个人等级调整循环次数
-        random_number = random.randint(1, 100)
-        run_pc()
-        print('PC端第', i + 1, '次完成')
-        time.sleep(2)
-    driver.quit()
+    driver = webdriver.Edge(driverPath, options=options)
+    getScore('PC端', 30)
     print('PC端完成')
 
     # 移动端
     mobile_emulation = {'deviceName': 'iPhone 6'}  # 添加移动端
     # mobile_emulation = {'deviceName': 'Pixel 5'}  # 添加移动端
     options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动端模拟器打开
-    driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver', options=options)
-    for i in range(20):  # 每次搜索获取3积分，根据个人等级调整循环次数
-        random_number = random.randint(1, 100)
-        run_pc()
-        print('移动端第', i + 1, '次完成')
-        time.sleep(2)
-    driver.quit()
+    driver = webdriver.Edge(driverPath, options=options)
+    getScore('移动端', 20)
     print('移动端完成')
