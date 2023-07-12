@@ -9,7 +9,6 @@
 - driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver', options=options)，路径改为Edge Driver路径
 
 
-
 ###### 运行方法
 
 - 首先运行1st文件（cookies存储）
