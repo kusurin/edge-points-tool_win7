@@ -23,7 +23,7 @@ def run_pc(random_number):
 
 def getScore(str, times):
     for i in range(times):  # 每次搜索获取3积分，根据个人等级调整循环次数timse
-        random_number = random.randint(1, 100)
+        random_number = random.randint(1, 10000)
         run_pc(random_number)
         print(str + '第', i + 1, '次完成')
         time.sleep(2)
