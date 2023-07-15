@@ -21,16 +21,22 @@ def run_pc(random_number):
     OpenUrl('https://cn.bing.com/search?q=' + str(random_number))
 
 
-def getScore(str, times):
-    for i in range(times):  # 每次搜索获取3积分，根据个人等级调整循环次数timse
-        random_number = random.randint(1, 10000)
-        run_pc(random_number)
-        print(str + '第', i + 1, '次完成')
+def getScore(str, l):
+    times = 0
+    for i in l:
+        times += 1
+        run_pc(i)
+        print(str + '第', times, '次完成')
         time.sleep(2)
     driver.quit()
 
 
 if __name__ == "__main__":
+    timesPC = 30  # PC端次数
+    timesMobile = 20  # 移动端次数
+    timesSum = timesPC + timesMobile  # PC端和移动端总次数
+    List = random.sample(range(1, 1000), timesSum)
+
     options = Options()
     # 设置driver路径
     driverPath = 'C:/Users/Windy/EdgeDriver/msedgedriver'
@@ -38,7 +44,7 @@ if __name__ == "__main__":
 
     # PC端
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('PC端', 35)
+    getScore('PC端', List[:timesPC])
     print('PC端完成')
 
     # 移动端
@@ -46,5 +52,5 @@ if __name__ == "__main__":
     # mobile_emulation = {'deviceName': 'Pixel 5'}  # 添加移动端
     options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动端模拟器打开
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('移动端', 25)
+    getScore('移动端', List[timesPC:])
     print('移动端完成')
