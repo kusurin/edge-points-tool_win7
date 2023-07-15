@@ -32,10 +32,10 @@ def getScore(str, l):
 
 
 if __name__ == "__main__":
-    timesPC = 30  # PC端次数
-    timesMobile = 20  # 移动端次数
+    timesPC = 40  # PC端次数
+    timesMobile = 30  # 移动端次数
     timesSum = timesPC + timesMobile  # PC端和移动端总次数
-    List = random.sample(range(1, 1000), timesSum)
+    List = random.sample(range(1, 10000), timesSum)
 
     options = Options()
     # 设置driver路径
