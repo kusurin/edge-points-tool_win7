@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     # PC端
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('PC端', 30)
+    getScore('PC端', 35)
     print('PC端完成')
 
     # 移动端
@@ -46,5 +46,5 @@ if __name__ == "__main__":
     # mobile_emulation = {'deviceName': 'Pixel 5'}  # 添加移动端
     options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动端模拟器打开
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('移动端', 20)
+    getScore('移动端', 25)
     print('移动端完成')
