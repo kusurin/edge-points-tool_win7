@@ -11,15 +11,21 @@ https://blog.csdn.net/weixin_39379132/article/details/129004864
 
 ###### 需要自己修改的地方
 
-setCookies.py文件中
+1. setCookies.py文件中
 
-- driver = webdriver.Edge('C:/Users/Windy/EdgeDriver')，路径改为自己的Edge Driver路径
+   - driver = webdriver.Edge('C:/Users/Windy/EdgeDriver')，路径改为自己的Edge Driver路径
 
-execute.py文件中
+2. execute.py文件中
 
-- driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver', options=options)，路径改为自己的Edge Driver路径
-- timesPC和timesMobile需根据自己的上限进行调整，值为上限除以3
+   - driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver', options=options)，路径改为自己的Edge Driver路径
+   - timesPC和timesMobile需根据自己的上限进行调整，值为上限除以3
 
 ###### 运行方法
 
 - 运行run.py文件
+
+###### 可能出现的问题
+
+1. 如果不能自动登录edge，请注释掉setCookies.py文件中以下代码，并手动登录：
+   - options = Options()
+   - options.add_argument("--headless")  # 设置后台运行，无窗口化

@@ -40,7 +40,7 @@ if __name__ == "__main__":
     options = Options()
     # 设置driver路径
     driverPath = 'C:/Users/Windy/EdgeDriver/msedgedriver'
-    # options.add_argument("--headless")  #设置后台运行，无窗口化
+    options.add_argument("--headless")  # 设置后台运行，无窗口化
 
     # PC端
     driver = webdriver.Edge(driverPath, options=options)
