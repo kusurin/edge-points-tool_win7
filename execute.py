@@ -43,9 +43,9 @@ if __name__ == "__main__":
     options.add_argument("--headless")  # 设置后台运行，无窗口化
 
     # PC端
-    # driver = webdriver.Edge(driverPath, options=options)
-    # getScore('PC端', List[:timesPC])
-    # print('PC端完成')
+    driver = webdriver.Edge(driverPath, options=options)
+    getScore('PC端', List[:timesPC])
+    print('PC端完成')
 
     # 移动端
     mobile_emulation = {'deviceName': 'Galaxy S5'}  # 添加移动端
