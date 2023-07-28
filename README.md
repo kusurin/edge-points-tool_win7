@@ -1,6 +1,6 @@
 ###### 参考
 
-blog.csdn.net/weixin_39379132/article/details/129004864
+https://blog.csdn.net/weixin_39379132/article/details/129004864
 
 在此基础上进行了部分代码重构，避免了随机数重复的可能，并一次性执行PC和手机端的积分获取
 
