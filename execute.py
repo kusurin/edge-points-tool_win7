@@ -32,27 +32,33 @@ def getScore(str, l):
 
 
 if __name__ == "__main__":
-    timesPC = 40  # PC端次数
-    timesMobile = 30  # 移动端次数
-    timesSum = timesPC + timesMobile  # PC端和移动端总次数
+    timesEdge = 6  # Microsoft Edge奖励次数
+    timesPC = 34  # 电脑搜索次数
+    timesMobile = 30  # 移动设备搜索次数
+    timesSum = timesEdge + timesPC + timesMobile  # 总次数
     List = random.sample(range(1, 10000), timesSum)
 
     options = Options()
     # 设置driver路径
     driverPath = 'C:/Users/Windy/EdgeDriver/msedgedriver'
+
+    # Microsoft Edge奖励
+    driver = webdriver.Edge(driverPath, options=options)
+    getScore('Edge奖励', List[:timesEdge])
+    print('Microsoft Edge奖励完成')
+
+    # 电脑搜索
     options.add_argument("--headless")  # 设置后台运行，无窗口化
-
-    # PC端
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('PC端', List[:timesPC])
-    print('PC端完成')
+    getScore('电脑搜索', List[timesEdge:timesEdge + timesPC])
+    print('电脑搜索完成')
 
-    # 移动端
-    mobile_emulation = {'deviceName': 'Galaxy S5'}  # 添加移动端
-    options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动端模拟器打开
+    # 移动设备搜索
+    mobile_emulation = {'deviceName': 'Galaxy S5'}  # 添加移动设备搜索
+    options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动设备搜索模拟器打开
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('移动端', List[timesPC:])
-    print('移动端完成')
+    getScore('移动设备搜索', List[timesEdge + timesPC:])
+    print('移动设备搜索完成')
 
     # deviceName列表
     # "deviceName": "Apple iPhone 3GS",

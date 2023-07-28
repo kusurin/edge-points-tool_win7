@@ -26,7 +26,4 @@ https://blog.csdn.net/weixin_39379132/article/details/129004864
 
 ###### 可能出现的问题
 
-1. 如果不能自动登录edge，请注释掉setCookies.py文件中以下代码，并手动登录：
-   - options = Options()
-   - options.add_argument("--headless")  # 设置后台运行，无窗口化
-2. 在使用脚本时，不能科学上网，会导致运行错误
+1. 在使用脚本时，不能科学上网，会导致运行错误
