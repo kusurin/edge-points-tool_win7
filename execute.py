@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
     options = Options()
     # 设置driver路径
-    driverPath = 'C:/Users/Windy/EdgeDriver/msedgedriver'
+    driverPath = 'msedgedriver'
 
     # Microsoft Edge奖励
     driver = webdriver.Edge(driverPath, options=options)

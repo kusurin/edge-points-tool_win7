@@ -1,10 +1,9 @@
 from selenium import webdriver
-from selenium.webdriver.edge.options import Options
 import time
 import json
 
 # 填写webdriver的保存目录
-driver = webdriver.Edge('C:/Users/Windy/EdgeDriver/msedgedriver')
+driver = webdriver.Edge('msedgedriver')
 
 # 记得写完整的url 包括http和https
 driver.get('https://cn.bing.com/')
@@ -17,3 +16,4 @@ with open('cookies.txt', 'w') as f:
     f.write(json.dumps(driver.get_cookies()))
 
 driver.close()
+print('用户Cookies读取完成')
