@@ -2,7 +2,7 @@
 
 https://blog.csdn.net/weixin_39379132/article/details/129004864
 
-在此基础上进行了部分代码重构，避免了随机数重复的可能，并一次性执行PC和手机端的积分获取
+在此基础上进行了部分代码重构，避免了随机数重复的可能，并一次性执行所有积分获取
 
 ###### 文件介绍
 - setCookies.py文件用于获取用户的cookies信息
@@ -30,3 +30,4 @@ https://blog.csdn.net/weixin_39379132/article/details/129004864
 ###### 可能出现的问题
 
 1. 在使用脚本时，不能使用代理，会导致运行错误
+2. 手机端脚本运行时积分可能不会增加，若未增加请修改execute.py文件中“'deviceName': 'Galaxy S5'”语句，机型可从下面列表中自选
