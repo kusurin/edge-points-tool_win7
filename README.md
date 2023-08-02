@@ -1,3 +1,16 @@
+###### 对win7的支持
+此repo在原repo的基础上降级增加了对win7(包括32位)的支持，主要有
+- win7无法使用环境变量msedgedrive
+- win7的python版本问题
+- python版本问题导致的selerium版本问题
+####### 使用说明
+- 在msedgedriver_path.txt中填写msedgedriver.exe的绝对路径
+- 在option.txt中填写webdriver参数（如--headless隐藏窗口，每个一行）
+- 运行`初始化环境.bat`
+- 运行`点我运行.bat`
+####### 注意事项
+- 严格按照`下载必要环境.html`中的要求下载环境
+- win7需要先安装edge和IE11
 ###### 参考
 
 https://blog.csdn.net/weixin_39379132/article/details/129004864
