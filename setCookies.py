@@ -3,7 +3,7 @@ import time
 import json
 
 # 在msedgedriver_path.txt填写webdriver的保存目录（win7填写绝对路径）
-driver_reader = open('.\msedgedriver_path.txt','r','UTF-8')
+driver_reader = open('.\msedgedriver_path.txt','r',encoding='UTF-8')
 driverPath = driver_reader.readline()
 driver = webdriver.Edge(driverPath)
 driver_reader.close()

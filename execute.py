@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
     options = Options()
     # 在msedgedriver_path.txt设置driver路径（win7使用绝对路径）
-    driver_reader = open('.\msedgedriver_path.txt','r','UTF-8')
+    driver_reader = open('.\msedgedriver_path.txt','r',encoding='UTF-8')
     driverPath = driver_reader.readline()
     driver_reader.close()
 
