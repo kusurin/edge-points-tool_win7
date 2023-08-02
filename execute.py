@@ -38,7 +38,13 @@ if __name__ == "__main__":
     timesSum = timesEdge + timesPC + timesMobile  # 总次数
     List = random.sample(range(1, 10000), timesSum)
 
+    options_reader = open('.\options.txt','r',encoding='UTF-8')
     options = Options()
+    line = options_reader.readline()
+    while line:
+        options.add_argument(line)  # 设置后台运行，无窗口化
+        line = options_reader.readline()
+    options_reader.close()
     # 在msedgedriver_path.txt设置driver路径（win7使用绝对路径）
     driver_reader = open('.\msedgedriver_path.txt','r',encoding='UTF-8')
     driverPath = driver_reader.readline()
@@ -50,7 +56,6 @@ if __name__ == "__main__":
     print('Microsoft Edge奖励完成')
 
     # 电脑搜索
-    options.add_argument("--headless")  # 设置后台运行，无窗口化
     driver = webdriver.Edge(driverPath, options=options)
     getScore('电脑搜索', List[timesEdge:timesEdge + timesPC])
     print('电脑搜索完成')
