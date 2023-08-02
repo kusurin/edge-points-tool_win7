@@ -32,15 +32,17 @@ def getScore(str, l):
 
 
 if __name__ == "__main__":
-    timesEdge = 6  # Microsoft Edge奖励次数
-    timesPC = 34  # 电脑搜索次数
-    timesMobile = 30  # 移动设备搜索次数
+    timesEdge = random.randint(6,10)  # Microsoft Edge奖励次数
+    timesPC = random.randint(30,40)  # 电脑搜索次数
+    timesMobile = random.randint(30,40)  # 移动设备搜索次数
     timesSum = timesEdge + timesPC + timesMobile  # 总次数
     List = random.sample(range(1, 10000), timesSum)
 
     options = Options()
-    # 设置driver路径
-    driverPath = 'msedgedriver'
+    # 在msedgedriver_path.txt设置driver路径（win7使用绝对路径）
+    driver_reader = open('.\msedgedriver_path.txt','r','UTF-8')
+    driverPath = driver_reader.readline()
+    driver_reader.close()
 
     # Microsoft Edge奖励
     driver = webdriver.Edge(driverPath, options=options)

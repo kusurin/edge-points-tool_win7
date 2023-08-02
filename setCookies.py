@@ -2,8 +2,11 @@ from selenium import webdriver
 import time
 import json
 
-# 填写webdriver的保存目录
-driver = webdriver.Edge('msedgedriver')
+# 在msedgedriver_path.txt填写webdriver的保存目录（win7填写绝对路径）
+driver_reader = open('.\msedgedriver_path.txt','r','UTF-8')
+driverPath = driver_reader.readline()
+driver = webdriver.Edge(driverPath)
+driver_reader.close()
 
 # 记得写完整的url 包括http和https
 driver.get('https://cn.bing.com/')
