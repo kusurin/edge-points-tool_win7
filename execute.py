@@ -40,9 +40,13 @@ if __name__ == "__main__":
 
     options_reader = open('.\options.txt','r',encoding='UTF-8')
     options = Options()
+    options_edge = Options()
     line = options_reader.readline()
     while line:
-        options.add_argument(line)  # 设置后台运行，无窗口化
+        line = line.replace('\n','')
+        options.add_argument(line)
+        if line != "--headless": # edge奖励不能无窗口运行
+            options_edge.add_argument(line)
         line = options_reader.readline()
     options_reader.close()
     # 在msedgedriver_path.txt设置driver路径（win7使用绝对路径）
@@ -51,7 +55,7 @@ if __name__ == "__main__":
     driver_reader.close()
 
     # Microsoft Edge奖励
-    driver = webdriver.Edge(driverPath, options=options)
+    driver = webdriver.Edge(driverPath, options=options_edge)
     getScore('Edge奖励', List[:timesEdge])
     print('Microsoft Edge奖励完成')
 
