@@ -8,9 +8,11 @@
 - 在option.txt中填写webdriver参数（如--headless隐藏窗口，每个一行）
 - 运行`初始化环境.bat`
 - 运行`点我运行.bat`
+- 在获取cookies的第一个页面，手动登录
 ## 注意事项
 - 严格按照`下载必要环境.html`中的要求下载环境
 - win7需要先安装edge和IE11
+- win7获取cookies有时可能需要手动登录
 # 参考
 
 https://blog.csdn.net/weixin_39379132/article/details/129004864
