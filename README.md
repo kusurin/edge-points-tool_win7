@@ -13,6 +13,7 @@
 - 严格按照`下载必要环境.html`中的要求下载环境
 - win7需要先安装edge和IE11
 - win7获取cookies有时可能需要手动登录
+- 如果开启浏览器的弹窗在打开bing之后没有消失，影响开启移动设备模拟，请调整`# 移动设备搜索`中的延时
 # 参考
 
 https://blog.csdn.net/weixin_39379132/article/details/129004864
