@@ -21,8 +21,20 @@ def OpenUrl(url):
 
 
 def run_pc(random_number):
-    OpenUrl('https://cn.bing.com/search?q=' + str(random_number))
+    if int(str(random_number),10) < 30000 :
+        if random.randint(0,100) < 50:
+            OpenUrl('https://cn.bing.com/search?q=' + 'gb ' + str(random_number))
+        elif (int(str(random_number),10) < 15000) and (random.randint(0,100) < 50) :
+            OpenUrl('https://cn.bing.com/search?q=' + 'iso ' + str(random_number))
+        else :
+            OpenUrl('https://cn.bing.com/search?q=' + 'cas ' + str(random_number))
+    elif random.randint(0,100) < 50 :
+        OpenUrl('https://cn.bing.com/search?q=' + 'cas ' + str(random_number))
+    else :
+        OpenUrl('https://cn.bing.com/search?q=' + str(random_number))
 
+
+delay_max = random.randint(1200,2000)
 
 def getScore(str, l):
     times = 0
@@ -30,7 +42,7 @@ def getScore(str, l):
         times += 1
         run_pc(i)
         print(str + '第', times, '次完成')
-        time.sleep(2)
+        time.sleep(float(random.randint(200,delay_max))/100)
     driver.quit()
 
 
