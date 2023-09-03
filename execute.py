@@ -94,6 +94,17 @@ if __name__ == "__main__":
     getScore('移动设备搜索', List[timesEdge + timesPC:])
     print('移动设备搜索完成')
 
+    # 移动设备搜索备用
+    options_edge = Options()
+    mobile_emulation = {'deviceName': "iPhone 12 Pro"}  # 添加移动设备搜索
+    options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动设备搜索模拟器打开
+    user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+    options_edge.add_argument(f"user-agent={user_agent}") 
+    driver = webdriver.Edge(driverPath, options=options_edge)
+
+    getScore('移动设备搜索', List[timesEdge + timesPC:])
+    print('移动设备搜索完成')
+
     # deviceName列表
     # "deviceName": "Apple iPhone 3GS",
     # "deviceName": "Apple iPhone 4",
