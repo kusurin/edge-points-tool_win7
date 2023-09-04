@@ -5,9 +5,6 @@ from selenium.webdriver.edge.options import Options
 
 import time
 
-import win32api
-import win32con
-
 
 def OpenUrl(url):
     # 访问网址
@@ -80,24 +77,8 @@ if __name__ == "__main__":
     print('电脑搜索完成')
 
     # 移动设备搜索
-    mobile_emulation = {'deviceName': 'Galaxy S4'}  # 添加移动设备搜索
-    options_edge.add_argument("--auto-open-devtools-for-tabs") #打开F12
-    driver = webdriver.Edge(driverPath, options=options_edge) #F12不能无窗口运行
-    time.sleep(5)
-    OpenUrl('https://cn.bing.com')
-    win32api.keybd_event(16, 0, 0, 0)
-    win32api.keybd_event(17, 0, 0, 0)
-    win32api.keybd_event(77, 0, 0, 0)
-    win32api.keybd_event(77, 0, win32con.KEYEVENTF_KEYUP, 0)
-    win32api.keybd_event(16, 0, win32con.KEYEVENTF_KEYUP, 0)
-    win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
-    getScore('移动设备搜索', List[timesEdge + timesPC:])
-    print('移动设备搜索完成')
-
-    # 移动设备搜索备用
-    options_edge = Options()
     mobile_emulation = {'deviceName': "iPhone 12 Pro"}  # 添加移动设备搜索
-    options.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动设备搜索模拟器打开
+    options_edge.add_experimental_option("mobileEmulation", mobile_emulation)  # 使用移动设备搜索模拟器打开
     user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
     options_edge.add_argument(f"user-agent={user_agent}") 
     driver = webdriver.Edge(driverPath, options=options_edge)
