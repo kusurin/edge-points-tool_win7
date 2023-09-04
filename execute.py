@@ -17,18 +17,8 @@ def OpenUrl(url):
             driver.add_cookie(cookie)
 
 
-def run_pc(random_number):
-    if int(str(random_number),10) < 30000 :
-        if random.randint(0,100) < 50:
-            OpenUrl('https://cn.bing.com/search?q=' + 'gb ' + str(random_number))
-        elif (int(str(random_number),10) < 15000) and (random.randint(0,100) < 50) :
-            OpenUrl('https://cn.bing.com/search?q=' + 'iso ' + str(random_number))
-        else :
-            OpenUrl('https://cn.bing.com/search?q=' + 'cas ' + str(random_number))
-    elif random.randint(0,100) < 50 :
-        OpenUrl('https://cn.bing.com/search?q=' + 'cas ' + str(random_number))
-    else :
-        OpenUrl('https://cn.bing.com/search?q=' + str(random_number))
+def run_pc(random_item):
+    OpenUrl('https://cn.bing.com/search?q=' + random_item)
 
 
 delay_max = random.randint(1200,2000)
@@ -48,7 +38,21 @@ if __name__ == "__main__":
     timesPC = random.randint(30,40)  # 电脑搜索次数
     timesMobile = random.randint(30,40)  # 移动设备搜索次数
     timesSum = timesEdge + timesPC + timesMobile  # 总次数
-    List = random.sample(range(1, 10000), timesSum)
+    
+    #从searchitems.txt读取搜索项目
+    items_reader = open('.\searchitems.txt','r',encoding='UTF-8')
+    List = []
+    linemarker = -1
+    while True:
+        linemarker += 1
+        List.append(items_reader.readline())
+        if not List[linemarker]:
+            break
+    items_reader.close()
+    if timesSum > linemarker:
+        print("搜索项不足")
+        exit()
+    random.shuffle(List)
 
     options_reader = open('.\options.txt','r',encoding='UTF-8')
     options = Options()
@@ -69,11 +73,13 @@ if __name__ == "__main__":
     # Microsoft Edge奖励
     driver = webdriver.Edge(driverPath, options=options_edge)
     getScore('Edge奖励', List[:timesEdge])
+    del List[:timesEdge]
     print('Microsoft Edge奖励完成')
 
     # 电脑搜索
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('电脑搜索', List[timesEdge:timesEdge + timesPC])
+    getScore('电脑搜索', List[:timesMobile])
+    del List[:timesMobile]
     print('电脑搜索完成')
 
     # 移动设备搜索
@@ -84,7 +90,14 @@ if __name__ == "__main__":
     driver = webdriver.Edge(driverPath, options=options_edge)
 
     getScore('移动设备搜索', List[timesEdge + timesPC:])
+    del List[:timesEdge]
     print('移动设备搜索完成')
+
+    #删除已搜索项目
+    items_writer= open('.\searchitems.txt','w',encoding='UTF-8')
+    for i in List:
+        items_writer.write(i)
+    items_writer.close()
 
     # deviceName列表
     # "deviceName": "Apple iPhone 3GS",
