@@ -42,14 +42,15 @@ if __name__ == "__main__":
     #从searchitems.txt读取搜索项目
     items_reader = open('.\searchitems.txt','r',encoding='UTF-8')
     List = []
-    linemarker = -1
     while True:
-        linemarker += 1
-        List.append(items_reader.readline())
-        if not List[linemarker]:
+        line=items_reader.readline()
+        if not line:
             break
+        if line == '\n':
+            continue
+        List.append(line)
     items_reader.close()
-    if timesSum > linemarker:
+    if timesSum > len(List):
         print("搜索项不足")
         exit()
     random.shuffle(List)
@@ -78,7 +79,7 @@ if __name__ == "__main__":
 
     # 电脑搜索
     driver = webdriver.Edge(driverPath, options=options)
-    getScore('电脑搜索', List[:timesMobile])
+    getScore('电脑搜索', List[:timesPC])
     del List[:timesMobile]
     print('电脑搜索完成')
 
@@ -89,7 +90,7 @@ if __name__ == "__main__":
     options_edge.add_argument(f"user-agent={user_agent}") 
     driver = webdriver.Edge(driverPath, options=options_edge)
 
-    getScore('移动设备搜索', List[timesEdge + timesPC:])
+    getScore('移动设备搜索', List[:timesMobile])
     del List[:timesEdge]
     print('移动设备搜索完成')
 
