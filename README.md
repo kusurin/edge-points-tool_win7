@@ -1,14 +1,17 @@
+# 大更新说明
+现在可以在`searchitems.txt`中更改自己想要的搜索内容，每条一行（被搜索过的项目会被删除）
 # 对win7的支持
 此repo在原repo的基础上降级增加了对win7(包括32位)的支持，主要有
 - win7无法使用环境变量msedgedrive
 - win7的python版本问题（使用了3.8.7）
 - python版本问题导致的selerium版本问题（使用了4.0.0）
 ## 使用说明
-- 在msedgedriver_path.txt中填写msedgedriver.exe的绝对路径
-- 在option.txt中填写webdriver参数（如--headless隐藏窗口，每个一行）
+- 在`msedgedriver_path.txt`中填写`msedgedriver.exe`的绝对路径
+- 在`option.txt`中填写webdriver参数（如`--headless`隐藏窗口，每个一行）
 - 运行`初始化环境.bat`
 - 运行`点我运行.bat`
 - 在获取cookies的第一个页面，手动登录（win10/11应该可以自动登录，可以减小延时）
+- 在`searchitems.txt`中可以更改自己想要的搜索内容，每条一行（被搜索过的项目会被删除）
 ## 注意事项
 - 严格按照`下载必要环境.html`中的要求下载环境
 - win7需要先安装edge和IE11
