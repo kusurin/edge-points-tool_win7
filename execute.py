@@ -80,7 +80,7 @@ if __name__ == "__main__":
     # 电脑搜索
     driver = webdriver.Edge(driverPath, options=options)
     getScore('电脑搜索', List[:timesPC])
-    del List[:timesMobile]
+    del List[:timesPC]
     print('电脑搜索完成')
 
     # 移动设备搜索
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     driver = webdriver.Edge(driverPath, options=options_edge)
 
     getScore('移动设备搜索', List[:timesMobile])
-    del List[:timesEdge]
+    del List[:timesMobile]
     print('移动设备搜索完成')
 
     #删除已搜索项目
