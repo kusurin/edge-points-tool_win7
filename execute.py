@@ -2,6 +2,9 @@ import json
 import random
 from selenium import webdriver
 from selenium.webdriver.edge.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 import time
 
@@ -18,17 +21,24 @@ def OpenUrl(url):
 
 
 def run_pc(random_item):
-    OpenUrl('https://cn.bing.com/search?q=' + random_item)
-
+    random_item=random_item.replace('\n','')
+    WebDriverWait(driver,30,0.5).until(expected_conditions.presence_of_element_located((By.ID,"sb_form_q")))
+    driver.find_element(By.ID,"sb_form_q").clear()
+    WebDriverWait(driver,30,0.5).until(expected_conditions.presence_of_element_located((By.ID,"sb_form_q")))
+    driver.find_element(By.ID,"sb_form_q").send_keys(random_item)
+    WebDriverWait(driver,30,0.5).until(expected_conditions.presence_of_element_located((By.ID,"sb_form_go")))
+    driver.find_element(By.ID,"sb_form_go").click()
 
 delay_max = random.randint(1200,2000)
 
-def getScore(str, l):
+def getScore(string, l):
     times = 0
+    OpenUrl('https://cn.bing.com/search?q=iso' + str(random.randint(10000,1000000)))
+    time.sleep(2)
     for i in l:
         times += 1
         run_pc(i)
-        print(str + '第', times, '/', len(l), '次完成')
+        print(string + '第', times, '/', len(l), '次完成')
         time.sleep(float(random.randint(200,delay_max))/100)
     driver.quit()
 
