@@ -39,7 +39,7 @@ def getScore(string, l):
         times += 1
         run_pc(i)
         print(string + '第', times, '/', len(l), '次完成')
-        time.sleep(float(random.randint(200,delay_max))/100)
+        time.sleep(300 + float(random.randint(200,delay_max))/100)
     driver.quit()
 
 
